@@ -23,24 +23,26 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 18)
+        label.font = ThemeFont.defaultTheme.titleBoldFont
         label.numberOfLines = 2
+        label.textColor = ThemeColor.defaultTheme.primaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
-        label.numberOfLines = 3
-        label.textColor = .darkGray
+        label.font = ThemeFont.defaultTheme.subTitleFont
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 5
+        label.textColor = ThemeColor.defaultTheme.secondaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let cardView: UIView = {
         let view = UIView()
-        view.backgroundColor = .secondarySystemBackground
+        view.backgroundColor = ThemeColor.defaultTheme.cardBackground
         view.layer.cornerRadius = 16
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.05
@@ -83,7 +85,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 12),
             titleLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -12),
             
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: -10),
             descriptionLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 12),
             descriptionLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -12),
             descriptionLabel.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -12)

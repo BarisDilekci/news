@@ -44,7 +44,7 @@ final class HomeView: UIView, HomeViewInput, UICollectionViewDelegate, UICollect
         super.init(frame: frame)
         setupViews()
         setupConstraints()
-        backgroundColor = .systemBackground
+        backgroundColor = ThemeColor.defaultTheme.background
     }
     
     required init?(coder: NSCoder) {
@@ -102,6 +102,6 @@ final class HomeView: UIView, HomeViewInput, UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 300)
+        return CGSize(width: collectionView.frame.width, height: 330)
     }
 }

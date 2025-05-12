@@ -18,7 +18,9 @@ final class HomeViewController: UIViewController, HomeViewProtocol {
     
     lazy var homeView : HomeView = {
         let view = HomeView()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = ThemeManager.defaultTheme.colorTheme.background
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "News"
         return view
     }()
         
