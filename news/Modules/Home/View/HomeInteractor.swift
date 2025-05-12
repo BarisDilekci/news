@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+protocol HomeInteractorProtocol : AnyObject {
+    var presenter: HomePresenterProtocol? { get set }
+}
+
+final class HomeInteractor: HomeInteractorProtocol {
+    var presenter: HomePresenterProtocol?
+}
