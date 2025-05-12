@@ -15,11 +15,22 @@ protocol HomeViewProtocol: AnyObject {
 
 final class HomeViewController: UIViewController, HomeViewProtocol {
     var presenter: (any HomePresenterProtocol)?
+    
+    lazy var homeView : HomeView = {
+        let view = HomeView()
+        view.backgroundColor = .systemBackground
+        return view
+    }()
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view = homeView
         presenter?.viewDidLoad()
+    }
+    
+    private func updatePresenter(presenter: HomePresenterProtocol) {
+        self.presenter = presenter
+        homeView.presenter
     }
 }
 
