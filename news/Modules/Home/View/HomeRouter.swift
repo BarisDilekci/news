@@ -27,7 +27,7 @@ final class HomeRouter: HomeRouterProtocol {
         // VIPER parçaları oluşturuluyor
         let view = HomeViewController()
         let presenter = HomePresenter()
-        let interactor = HomeInteractor()
+        let interactor = HomeInteractor(networkService: NetworkService.shared)
         
         // Bağlantılar yapılıyor
         view.presenter = presenter

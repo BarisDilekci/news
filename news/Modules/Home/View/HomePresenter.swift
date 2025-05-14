@@ -14,17 +14,31 @@ protocol HomePresenterProtocol {
     var interactor : HomeInteractorProtocol? { get set }
     var router : HomeRouterProtocol? { get set }
     func viewDidLoad()
+    
+    func didFetchNewsSuccess(_ news: [News])
+    func didFetchNewsFailure(_ error: String)
 }
 
-final class HomePresenter : HomePresenterProtocol {
-    var interactor: (any HomeInteractorProtocol)?
-    
-    var view: (any HomeViewProtocol)?
-    
-    var router: (any HomeRouterProtocol)?
-    
+final class HomePresenter: HomePresenterProtocol {
+    var news: [News] = []
+    var error: String?
+
+    var interactor: HomeInteractorProtocol?
+    var view: HomeViewProtocol?
+    var router: HomeRouterProtocol?
+
     func viewDidLoad() {
         print("HomePresenter: View did load")
-       
+        interactor?.fetchNews()
+    }
+
+    func didFetchNewsSuccess(_ news: [News]) {
+        self.news = news
+        view?.updateViewWithNews(news)
+    }
+
+    func didFetchNewsFailure(_ error: String) {
+        self.error = error
+        view?.showError(error)
     }
 }

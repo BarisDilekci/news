@@ -7,11 +7,22 @@
 
 import Foundation
 
-struct News : Codable {
-    let title : String
-    let description : String
-    let imageURL : String
+struct NewsResponse: Decodable {
+    let articles: [News]
 }
+
+struct News: Codable {
+    let title: String
+    let description: String? 
+    let imageURL: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case title
+        case description
+        case imageURL
+    }
+}
+
 
 let fakeNews: [News] = [
     News(title: "Apple WWDC 2025 Duyuruldu", description: "Apple, yıllık geliştirici konferansı WWDC'yi Haziran ayında düzenleyeceğini açıkladı.", imageURL: "https://via.placeholder.com/300x200.png?text=WWDC+2025"),

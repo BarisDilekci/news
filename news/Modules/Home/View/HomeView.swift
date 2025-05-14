@@ -89,14 +89,14 @@ final class HomeView: UIView, HomeViewInput, UICollectionViewDelegate, UICollect
     // MARK: - UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fakeNews.count
+        return newsItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(with: fakeNews[indexPath.item])
+        cell.configure(with: newsItems[indexPath.item])
         return cell
     }
     
