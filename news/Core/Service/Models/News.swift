@@ -1,8 +1,8 @@
 //
-//  HomeEntity.swift
+//  News.swift
 //  news
 //
-//  Created by Barış Dilekçi on 12.05.2025.
+//  Created by Barış Dilekçi on 15.05.2025.
 //
 
 import Foundation
