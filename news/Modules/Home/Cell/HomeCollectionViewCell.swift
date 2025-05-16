@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 final class HomeCollectionViewCell: UICollectionViewCell {
     static let identifier = "NewsCell"
@@ -14,7 +15,6 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     private let newsImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "placeholder")
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 12
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -95,5 +95,12 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     func configure(with news: News) {
         titleLabel.text = news.title
         descriptionLabel.text = news.description
+        
+        if let imageURLString = news.urlToImage, let url = URL(string: imageURLString) {
+            newsImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "no-found-image"))
+        } else {
+            newsImageView.image = UIImage(named: "no-found-image")
+        }
+        
     }
 }

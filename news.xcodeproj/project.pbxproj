@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		75589CC22DD25632005F9F76 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 75589CC12DD25632005F9F76 /* Lottie */; };
+		75D0E38C2DD7A699005367DA /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 75D0E38B2DD7A699005367DA /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75D0E38C2DD7A699005367DA /* SDWebImage in Frameworks */,
 				75589CC22DD25632005F9F76 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +133,7 @@
 			name = news;
 			packageProductDependencies = (
 				75589CC12DD25632005F9F76 /* Lottie */,
+				75D0E38B2DD7A699005367DA /* SDWebImage */,
 			);
 			productName = news;
 			productReference = 752F9B1E2DD2118400B0FF71 /* news.app */;
@@ -216,6 +219,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				75589CC02DD25632005F9F76 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				75D0E38A2DD7A699005367DA /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 752F9B1F2DD2118400B0FF71 /* Products */;
@@ -588,6 +592,14 @@
 				minimumVersion = 4.5.1;
 			};
 		};
+		75D0E38A2DD7A699005367DA /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -595,6 +607,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 75589CC02DD25632005F9F76 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		75D0E38B2DD7A699005367DA /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 75D0E38A2DD7A699005367DA /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
