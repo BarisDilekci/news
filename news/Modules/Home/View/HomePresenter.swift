@@ -15,6 +15,7 @@ protocol HomePresenterProtocol {
     var router : HomeRouterProtocol? { get set }
     func viewDidLoad()
     
+    func didSelectFilters(country: NewsCountry, category: NewsCategory, language: NewsLanguage)
     func didFetchNewsSuccess(_ news: [News])
     func didFetchNewsFailure(_ error: String)
 }
@@ -29,8 +30,13 @@ final class HomePresenter: HomePresenterProtocol {
 
     func viewDidLoad() {
         print("HomePresenter: View did load")
-        interactor?.fetchNews()
+        interactor?.fetchNews(country: .us, category: .general, language: .en)
     }
+    
+    func didSelectFilters(country: NewsCountry, category: NewsCategory, language: NewsLanguage) {
+           print("HomePresenter: Filters selected - Country: \(country.rawValue), Category: \(category.rawValue), Language: \(language.rawValue)")
+           interactor?.fetchNews(country: country, category: category, language: language)
+       }
 
     func didFetchNewsSuccess(_ news: [News]) {
         self.news = news

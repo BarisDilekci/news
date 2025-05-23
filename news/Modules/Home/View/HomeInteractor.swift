@@ -9,7 +9,7 @@ import Foundation
 
 protocol HomeInteractorProtocol : AnyObject {
     var presenter: HomePresenterProtocol? { get set }
-    func fetchNews()
+    func fetchNews(country: NewsCountry, category: NewsCategory, language: NewsLanguage)
 }
 
 final class HomeInteractor: HomeInteractorProtocol {
@@ -21,10 +21,16 @@ final class HomeInteractor: HomeInteractorProtocol {
         self.networkService = networkService
     }
     
-    func fetchNews() {
+    func fetchNews(country: NewsCountry, category: NewsCategory, language: NewsLanguage) {
         Task {
             do {
-                let response: NewsResponse = try await networkService.fetch(endpoint: .topHeadlines(country: "us", category: "technology"))
+                let response: NewsResponse = try await networkService.fetch(
+                    endpoint: .topHeadlines(
+                        country: country.rawValue,
+                        category: category.rawValue,
+                        language: language.rawValue 
+                    )
+                )
                 await MainActor.run {
                     presenter?.didFetchNewsSuccess(response.articles)
                 }
@@ -34,6 +40,5 @@ final class HomeInteractor: HomeInteractorProtocol {
                 }
             }
         }
-
     }
 }
