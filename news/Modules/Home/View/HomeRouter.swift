@@ -16,7 +16,6 @@ protocol HomeRouterProtocol: AnyObject {
     static func startExecution() -> HomeRouterProtocol
 }
 
-import UIKit
 
 final class HomeRouter: HomeRouterProtocol {
     var entry: EntryPoint?
