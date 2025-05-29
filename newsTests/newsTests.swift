@@ -57,7 +57,7 @@ struct newsTests {
         
         #expect(news.title == "Apple WWDC 2025 Duyuruldu")
         #expect(news.description == "Apple, yıllık geliştirici konferansı WWDC'yi Haziran ayında düzenleyeceğini açıkladı.")
-        #expect(news.imageURL ==  "https://via.placeholder.com/300x200.png?text=WWDC+2025")
+        #expect(news.urlToImage ==  "https://via.placeholder.com/300x200.png?text=WWDC+2025")
     }
     
 }

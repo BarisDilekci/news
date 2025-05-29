@@ -417,10 +417,25 @@ extension HomeView: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // Handle news item selection
         let impactFeedback = UIImpactFeedbackGenerator(style: .light)
         impactFeedback.impactOccurred()
+
+        print("TIKLANDIIIIIIIII")
+        print("Seçilen öğe indexi: \(indexPath.item)")
+
+        guard indexPath.item < newsItems.count else {
+            print("Hata: Geçersiz index. articles dizisi boş veya index dışında.")
+            return
+        }
+        let selectedNewsItem = newsItems[indexPath.item]
+
+    
+        presenter?.didSelectNewsItem(selectedNewsItem)
+      
+
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
+    
 }
 
 // MARK: - UIView Extension

@@ -13,6 +13,8 @@ protocol DetailPresenterProtocol : AnyObject {
     var router : DetailRouterProtocol? { get set }
     
     func viewDidLoad()
+    
+    func setNews(newsItem : News)
 }
 
 final class DetailPresenter : DetailPresenterProtocol {
@@ -22,10 +24,20 @@ final class DetailPresenter : DetailPresenterProtocol {
     
     var router: (any DetailRouterProtocol)?
     
+    private var newsItem : News?
+    
     func viewDidLoad() {
-        print("test")
+        if let news = newsItem {
+            
+        }
     }
     
+    func setNews(newsItem: News) {
+           self.newsItem = newsItem
+           if view != nil {
+               view?.displayNews(newsItem: newsItem)
+           }
+       }
     
 }
 

@@ -18,9 +18,11 @@ protocol HomePresenterProtocol {
     func didSelectFilters(country: NewsCountry, category: NewsCategory, language: NewsLanguage)
     func didFetchNewsSuccess(_ news: [News])
     func didFetchNewsFailure(_ error: String)
+    func didSelectNewsItem(_ newsItem: News)
 }
 
 final class HomePresenter: HomePresenterProtocol {
+
     var news: [News] = []
     var error: String?
 
@@ -47,4 +49,9 @@ final class HomePresenter: HomePresenterProtocol {
         self.error = error
         view?.showError(error)
     }
+    
+    func didSelectNewsItem(_ newsItem: News) {
+        router?.navigateToDetail(with: newsItem)
+    }
+    
 }
