@@ -9,10 +9,29 @@ import Foundation
 
 protocol DetailInteractorProtocol : AnyActor {
     var presenter : DetailPresenterProtocol? { get set }
+    
+    func toggleFavoriteStatus(for news : News)
 }
 
 final class DetailInteractor : DetailInteractorProtocol {
-    var presenter: (any DetailPresenterProtocol)?
+    weak var presenter: (any DetailPresenterProtocol)?
     
+    private let favoriteService : FavoriteServiceProtocol
     
+    init(favoriteService : FavoriteServiceProtocol) {
+        self.favoriteService = favoriteService
+    }
+    
+    func toggleFavoriteStatus(for news: News) {
+        
+        let currentlyFavorite = favoriteService.isFavorite(news: news)
+        
+        if currentlyFavorite {
+            favoriteService.removeFavorite(news: news)
+        } else {
+            favoriteService.addFavorite(news: news)
+        }
+        
+        NotificationCenter.default.post(name: .favoriteStatusChanged, object: nil)
+    }
 }
