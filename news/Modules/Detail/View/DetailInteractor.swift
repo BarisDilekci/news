@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol DetailInteractorProtocol : AnyActor {
+protocol DetailInteractorProtocol : AnyObject {
     var presenter : DetailPresenterProtocol? { get set }
     
     func toggleFavoriteStatus(for news : News)
